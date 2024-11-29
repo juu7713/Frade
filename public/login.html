@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./frade_style.css">
+  <!--F'rade 로고 폰트-->
+  <style> 
+    @import url('https://fonts.googleapis.com/css2?family=Kufam:ital,wght@0,400..900;1,400..900&display=swap');
+  </style>
+  <style>
+   a,
+   button,
+   input,
+   select,
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   * {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+       border: none;
+       text-decoration: none;
+       background: none;
+   
+       -webkit-font-smoothing: antialiased;
+   }
+   
+   menu, ol, ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+   }
+   </style>
+
+   <script>
+    function mobeToSignIn()  {
+      window.location.href = './sign_in.html'
+    }
+   </script>
+
+  <title>F'rade 로그인</title>
+  
+</head>
+<body>
+  <div class="div">
+    <div class="content">
+      <div class="copy">
+        <h1 class="f-rade">F’rade 로그인</h1>
+      </div>
+        <form id="login-form" action="http://localhost:8080/submit-login" method="POST">
+            <input type="text" name="loginID" id="username-field" class="field" placeholder="아이디">
+            <input type="password" name="loginPW" id="password-field" class="field" placeholder="비밀번호">
+            <input type="submit" value="로그인" id="login-form-submit" class="button">
+        </form>
+        <div class="divider">
+          <div class="rectangle-11"></div>
+          <div class="div3">프레이드 회원이 아니신가요?</div>
+          <div class="rectangle-10"></div>
+        </div>
+        <button onclick="mobeToSignIn()" class="button2">F’rade 회원가입</button>
+    </div>
+  </div>
+  
+</body>
+</html>
+

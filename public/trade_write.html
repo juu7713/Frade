@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./trade_write.css">
+   <!--F'rade 로고 폰트-->
+   <style> 
+    @import url('https://fonts.googleapis.com/css2?family=Kufam:ital,wght@0,400..900;1,400..900&display=swap');
+  </style>
+  
+  <style>
+   a,
+   button,
+   input,
+   select,
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   * {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+       border: none;
+       text-decoration: none;
+       background: none;
+   
+       -webkit-font-smoothing: antialiased;
+   }
+   
+   menu, ol, ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+   }
+
+  /* 트레이드 사진 업로드 모달창 style*/
+  .modal {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  .photo-upload-modal-content {
+    background: #ffffff;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 1px;
+    width: 500px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1001;
+  }
+  .close-button {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .close-button-image {
+    width: 18px;
+    height: 17.68px;
+    position: absolute;
+    left: calc(50% - 9px);
+    top: calc(50% - 9px);
+    overflow: visible;
+  }
+  .photo-upload {
+    border-radius: 4px;
+    border-style: solid;
+    border-color: #d9d9d9;
+    border-width: 1px;
+    width: 400px;
+    height: 200px;
+    position: absolute;
+    left: calc(50% - 200px);
+    top: calc(50% - 90px);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  .upload-button {
+    background: #d9d9d9;
+    border-radius: 10px;
+    width: 120px;
+    height: 40px;
+    position: absolute;
+    left: calc(50% - 60px);
+    bottom: 30px;
+    color: #000000;
+    text-align: center;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .upload-title {
+    color: #828282;
+    text-align: center;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    position: absolute;
+    left: calc(50% - 200px);
+    top: 20px;
+    width: 400px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* 사료 선택 모달창 style*/
+  .select-product-modal-content {
+    background: #ffffff;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 1px;
+    width: 600px;
+    height: 700px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1001;
+  }
+  .search-result-list {
+    border-style: solid;
+    border-color: #d9d9d9;
+    border-width: 1px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 450px;
+    max-height: 500px;
+    position: absolute;
+    left: calc(50% - 225px);
+    top: 120px;
+    overflow: auto;
+  }
+  .search-result {
+    border-style: solid;
+    border-color: #d9d9d9;
+    border-width: 0px 0px 1px 0px;
+    align-self: stretch;
+    flex-shrink: 0;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .product-image {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: 10px;
+    top: calc(50% - 40px);
+    overflow: hidden;
+  }
+  .product-brand {
+    color: #828282;
+    text-align: left;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    position: absolute;
+    left: 110px;
+    top: 10px;
+    width: 200px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .product-name {
+    color: #000000;
+    text-align: left;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    position: absolute;
+    left: 110px;
+    top: calc(50% - 10px);
+    width: 330px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .product-search {
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #454545;
+    border-width: 1px;
+    width: 450px;
+    height: 50px;
+    position: absolute;
+    left: calc(50% - 225px);
+    top: 50px;
+    overflow: hidden;
+  }
+  .search-input {
+    color: #828282;
+    text-align: left;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 5px;
+    width: 400px;
+    height: 40px;
+    position: absolute;
+    left: calc(50% - 215px);
+    top: calc(50% - 20px);
+    overflow: hidden;
+    outline: 0;
+  }
+  .search-button {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 15px);
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .search-button-image {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+  }
+   </style>
+   <script>
+    const url = 'http://localhost:8080/user-info';
+
+    window.onload = loadHeader; // 페이지 로드 시 헤더 유저 프로필 표시
+
+    // 헤더 유저 프로필 표시
+    async function loadHeader() {
+      try { // 세션에서 로그인 유저 정보 fetch
+        const res = await fetch(url, { method: 'GET', credentials: 'include' });
+        if (!res.ok) {
+          console.log('로그인 유저 정보 fetch 오류');
+        }
+        const user = await res.json();  // 유저 정보 JSON 변환
+        const userID = user.id;
+        const username = user.username;
+        const userProfileUrl = user.profile;
+
+        // 로그인 유저 정보 표시
+        document.getElementById('profile-username').innerText = username || '로그인 하세요.';
+        document.getElementById('profile-image').src = userProfileUrl || '../img_src/account.jpg';
+
+        // 트레이드 내용 폼에 작성자 userID 추가
+        document.getElementById('trade-writer').value = userID;
+      } catch (error) {
+        console.error("사용자 정보 load 오류: ", error);
+      }
+    }
+    
+  </script>
+  <title>트레이드 등록</title>
+</head>
+<body>
+  <div class="div">
+    <!-- 헤더 -->
+    <div class="header">
+        <div class="menu-button"></div>
+        <div class="f-rade">F’rade</div>
+        <div class="profile">
+          <div class="username" id="profile-username"></div>
+          <div class="image">
+            <img class="image-content" id="profile-image"/>
+          </div>
+        </div>
+        <div class="menu">Menu</div>
+      </div>
+
+    <!--트레이드 내용 입력-->
+    <form id="trade-content" action="http://localhost:8080/submit-trade-write" method="POST">
+      <div class="div2">
+        <textarea class="div3" name="text" id="trade-text" placeholder="트레이드 상세설명 입력"></textarea>
+        <input type="text" class="div6" name="title" id="trade-title" placeholder="트레이드 제목 입력">
+      </div>
+      <!--사료 상세정보 입력-->
+      <div class="div7"> 
+        <div class="product-info1">
+          <div class="product-info-label">
+            <div class="label-text">소비기한</div>
+          </div>
+          <input type="text" class="_01-input-field" name="prodUbd" id="product-ubd" placeholder="YYYY-MM-DD">
+        </div>
+        <div class="product-info2">
+          <div class="product-info-label">
+            <div class="label-text">중량</div>
+          </div>
+          <input type="text" class="_01-input-field" name="prodWeight" id="product-weight" placeholder="XXXX(g)   ex) 500">
+        </div>
+        <div class="product-info3">
+          <div class="product-info-label">
+            <div class="label-text">상태</div>
+          </div>
+          <select class="_01-input-field" name="prodOpened" id="product-opened" placeholder="개봉 상태 선택">
+              <option value="미개봉">미개봉</option>
+              <option value="개봉">개봉</option>
+          </select>
+        </div>
+      </div>
+      <input type="text" name="tradeProdId" id="trade-product" value="none" hidden>
+      <input type="text" name="reqProdId" id="requested-product" value="none" hidden>
+      <input type="text" name="tradePhotoUrl" id="trade-photo-url" hidden>
+      <input type="text" name="tradeWriterId" id="trade-writer" hidden>
+      <button type="submit" class="_00-primary-button">트레이드 등록</button>
+    </form> 
+    <div class="div9" id="photo-upload-section">
+      <div class="button2" id="photo-upload-button" onclick="openPhotoUpload()">
+        <div class="button3"></div>
+        <div class="button-label" id="upload-button-label">사진 추가</div>
+      </div>
+    </div>
+
+    <!--사진 파일 업로드창-->
+    <div class="modal" id="photo-upload-modal">
+      <div class="photo-upload-modal-content" id="photo-upload-modal-content">
+        <div class="upload-title">
+          교환할 사료의 상태를 확인할 수 있는 사진 파일을 선택해주세요.
+        </div>
+        <button type="button" class="close-button" onclick="closePhotoUpload()">  <!-- 사진 파일 업로드창 닫기 버튼-->
+          <img class="close-button-image" src="../img_src/close.png" />
+        </button>
+        <div class="photo-upload">
+          <form id="photo-upload-form" action="http://localhost:8080/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" id="photo" name="photo" accept="image/*" required>
+            <button type="button" class="upload-button" onclick="uploadPhoto()">사진 업로드</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--사진 파일 업로드창 script-->
+    <script>
+      const photoUpload = document.getElementById('photo-upload-modal');
+      // 사진 파일 업로드창 열기
+      function openPhotoUpload() {
+        photoUpload.style.display = 'flex';
+      }
+      // 사진 파일 업로드창 닫기
+      function closePhotoUpload() {
+        photoUpload.style.display = 'none';
+      }
+      // 선택한 사진 파일 업로드
+      async function uploadPhoto() {
+        const uploadForm = document.getElementById('photo-upload-form');
+        const uploadFormData = new FormData(uploadForm);
+        
+        try { 
+          // 사진 파일 업로드 -> 저장된 파일 url 가져오기
+          const res = await fetch('http://localhost:8080/upload', {
+              method: 'POST',
+              body: uploadFormData
+          });
+          const uploadResult = await res.json();
+
+          if(uploadResult) {
+            document.getElementById('trade-photo-url').value = uploadResult.fileUrl;  // trade 폼에 업로드한 사진 파일 url 포함
+            console.log(uploadResult.filename);
+            console.log(uploadResult.fileUrl);
+            uploadPhotoPreview(uploadResult.filename, uploadResult.fileUrl);
+            closePhotoUpload();
+          } else {
+            console.log('파일 업로드 실패');
+          }
+
+        } catch (error) {
+          console.error('업로드 오류:', error);
+        }
+      }
+
+      // 업로드한 사진 파일 미리보기
+      function uploadPhotoPreview(filename, fileUrl) {
+        const photoSection = document.getElementById('photo-upload-section');
+        
+        photoSection.innerHTML = `
+          <div class="button2" id="photo-upload-button" onclick="openPhotoUpload()">
+            <div class="button3"></div>
+            <div class="button-label" id="upload-button-label">사진 추가</div>
+          </div>
+        `
+        document.getElementById('upload-button-label').innerText = "사진 변경"; // 버튼 라벨, 위치 변경
+        document.getElementById('photo-upload-button').style.right = '170px';
+        
+        // 이미지 미리보기
+        const imagePreview = document.createElement('img');
+        imagePreview.src = '..' + fileUrl;
+        imagePreview.alt = "업로드된 사진";
+        imagePreview.classList.add("uploaded-image-preview");
+        // 파일 이름 표시
+        const uploadedFilename = document.createElement('p');
+        uploadedFilename.textContent = filename;
+        uploadedFilename.classList.add("uploaded-filename");
+
+        photoSection.appendChild(imagePreview);
+        photoSection.appendChild(uploadedFilename);
+      }
+    </script>
+
+    <!--등록 / 요청 사료 선택-->
+    <div class="select-trade-product">
+      <div class="select-product-label">교환하려는 사료 선택</div>
+      <div class="rectangle-2" id="trade-product-view">
+        <div class="button2" id="select-trade-product-button" onclick="openTradeProduct()">
+          <div class="button3"></div>
+          <div class="button-label">사료 선택</div>
+        </div>
+      </div>
+    </div>
+    <div class="select-requested-product">
+      <div class="select-product-label">교환 받고 싶은 사료 선택</div>
+      <div class="rectangle-2" id="requested-product-view">
+        <div class="button2" id="select-requested-product-button" onclick="openRequestedProduct()">
+          <div class="button3"></div>
+          <div class="button-label">사료 선택</div>
+        </div>
+      </div>
+    </div>
+
+    <!--등록 사료 선택창-->
+    <div class="modal" id="trade-product-modal">
+      <div class="select-product-modal-content">
+        <div class="search-result-list" id="trade-product-list"></div>  <!--사료 제품 검색 결과 표시 부분-->
+        <!--사료 제품 검색-->
+        <form class="product-search" id="trade-product-search-form">
+          <input type="text" name="word" id="trade-search-word-field" class="search-input" placeholder="사료명 또는 브랜드로검색">
+          <button type="button" class="search-button" id="product-search-form-submit" onclick="submitProductSearch('trade')">
+            <img class="search-button-image"  src="../img_src/search.png" />
+          </button>
+        </form>
+        <button class="close-button" onclick="closeTradeProduct()">
+          <img class="close-button-image" src="../img_src/close.png" />
+        </button>
+      </div>
+    </div>
+
+    <!--요청 사료 선택창-->
+    <div class="modal" id="requested-product-modal">
+      <div class="select-product-modal-content">
+        <div class="search-result-list" id="requested-product-list"></div>  <!--사료 제품 검색 결과 표시 부분-->
+        <!--사료 제품 검색-->
+        <form class="product-search" id="requested-product-search-form">
+          <input type="text" name="word" id="requested-search-word-field" class="search-input" placeholder="사료명 또는 브랜드로검색">
+          <button type="button" class="search-button" id="product-search-form-submit" onclick="submitProductSearch('requested')">
+            <img class="search-button-image"  src="../img_src/search.png" />
+          </button>
+        </form>
+        <button class="close-button" onclick="closeRequestedProduct()">
+          <img class="close-button-image" src="../img_src/close.png" />
+        </button>
+      </div>
+    </div>
+    <!--등록 / 요청 사료 선택창 script-->
+    <script>
+      const selectTradeProduct = document.getElementById('trade-product-modal');
+      const selectRequestedProduct = document.getElementById('requested-product-modal');
+
+      // 등록 사료 선택창 열기
+      function openTradeProduct() {
+        selectTradeProduct.style.display = 'flex';
+      }
+      // 등록 사료 선택창 닫기
+      function closeTradeProduct() {
+        selectTradeProduct.style.display = 'none';
+      }
+      // 요청 사료 선택창 열기
+      function openRequestedProduct() {
+        selectRequestedProduct.style.display = 'flex';
+      }
+      // 요청 사료 선택창 닫기
+      function closeRequestedProduct() {
+        selectRequestedProduct.style.display = 'none';
+      }
+      // 사료 검색 폼 submit
+      function submitProductSearch(searchType) {
+        let searchWord = '';
+        if (searchType === 'trade') { // 등록 사료 검색일 경우
+          searchWord = document.getElementById('trade-search-word-field').value;
+        }
+        else {  // 요청 사료 검색일 경우
+          searchWord = document.getElementById('requested-search-word-field').value;
+        }
+        
+        fetch("http://localhost:8080/submit-product-search", {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', },
+          body: JSON.stringify({ word: searchWord }),
+        })
+          .then(res => {
+            if(!res.ok) {
+              throw new Error("사료 검색 서버 오류");
+            }
+            return res.json();
+          })
+          .then(products => { 
+            showSearchedProducts(products, searchType);
+          })
+          .catch(error => {
+            console.error('사료 검색 폼 submit 오류:', error);
+          });
+      }
+      function showSearchedProducts(products, searchType) {
+        let productList, productField;
+
+        // 등록 or 요청 사료 요소 지정
+        if(searchType === 'trade') {
+          productList = document.getElementById('trade-product-list');
+          productField = document.getElementById('trade-product');
+        }
+        else {
+          productList = document.getElementById('requested-product-list');
+          productField = document.getElementById('requested-product');
+        }
+        
+        // 사료 검색 결과 표시
+        productList.innerHTML = ``;   // 사료 검색 결과 초기화
+        products.results.forEach(product => {
+          const list = document.createElement('div');
+          list.classList.add('search-result');
+          list.innerHTML = `
+              <img class="product-image" src="${product.img_url}" />
+              <div class="product-brand">${product.brand}</div>
+              <div class="product-name">${product.prod_name}</div>
+          `;
+          list.onclick = () => {  // 검색 결과 항목 클릭 시 트레이드 내용 폼에 등록/요청 사료 제품ID 추가
+            productField.value = product.prod_id;
+            showSelectedProduct(product, searchType);
+          };
+          productList.appendChild(list);
+        });
+      }
+
+      // 선택한 사료 정보 표시
+      function showSelectedProduct(product, searchType) {
+        if(searchType === 'trade') {
+          document.getElementById('trade-product-view').innerHTML = ` 
+            <div class="selected-product">
+              <img class="product-image" src="${product.img_url}" />
+              <div class="product-brand">${product.brand}</div>
+              <div class="product-name">${product.prod_name}</div>
+            </div>
+            <div class="button2" id="select-trade-product-button" onclick="openTradeProduct()">
+              <div class="button3"></div>
+              <div class="button-label">사료 변경</div>
+            </div>
+          `;
+          document.getElementById('select-trade-product-button').style.bottom = '30px';
+          closeTradeProduct();
+        }
+        else {
+          document.getElementById('requested-product-view').innerHTML = ` 
+            <div class="selected-product">
+              <img class="product-image" src="${product.img_url}" />
+              <div class="product-brand">${product.brand}</div>
+              <div class="product-name">${product.prod_name}</div>
+            </div>
+            <div class="button2" id="select-requested-product-button" onclick="openRequestedProduct()">
+              <div class="button3"></div>
+              <div class="button-label">사료 변경</div>
+            </div>
+          `;
+          document.getElementById('select-requested-product-button').style.bottom = '30px';
+          closeRequestedProduct();
+        }
+      }
+    </script>
+    
+    
+  </div>
+  
+</body>
+</html>

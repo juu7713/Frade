@@ -1,0 +1,151 @@
+.div,
+.div * {
+  box-sizing: border-box;
+}
+.div {
+  background: #ffffff;
+  height: 1024px;
+  position: relative;
+  overflow: hidden;
+}
+.content {
+  width: 800px;
+  height: 584px;
+  position: absolute;
+  left: calc(50% - 400px);
+  top: calc(50% - 292px);
+  overflow: hidden;
+}
+.copy {
+  width: 500px;
+  height: 120px;
+  position: absolute;
+  left: calc(50% - 250px);
+  top: 30px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+.div2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 24px;
+  line-height: 150%;
+  font-weight: 500;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.f-rade {
+  color: #000000;
+  text-align: center;
+  font-family: "Kufam", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 56px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.div3 {
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-width: 1px;
+  width: 330px;
+  height: 350px;
+  position: absolute;
+  left: 420px;
+  top: 191px;
+  overflow: hidden;
+}
+.text {
+  color: #454545;
+  text-align: center;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 20px;
+  line-height: 150%;
+  font-weight: 500;
+  position: absolute;
+  left: calc(50% - 109px);
+  top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vuesax-linear-profile-circle {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  left: calc(50% - 60px);
+  top: calc(50% - 71px);
+}
+.vuesax-linear-profile-circle2 {
+  height: 120px;
+  width: 120px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: visible;
+  cursor: pointer;
+}
+.f-rade2 {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 20px;
+  line-height: 140%;
+  font-weight: 500;
+  position: absolute;
+  left: calc(50% - 69px);
+  top: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div4 {
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-width: 1px;
+  width: 330px;
+  height: 350px;
+  position: absolute;
+  left: 50px;
+  top: 192px;
+  overflow: hidden;
+}
+.text2 {
+  color: #454545;
+  text-align: center;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 20px;
+  line-height: 150%;
+  font-weight: 500;
+  position: absolute;
+  left: calc(50% - 100px);
+  top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vuesax-linear-login {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  left: calc(50% - 60px);
+  top: calc(50% - 72px);
+}
+.vuesax-linear-login2 {
+  height: 120px;
+  width: 120px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: visible;
+  cursor: pointer;
+}

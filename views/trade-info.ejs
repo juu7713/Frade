@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../public/trade-info.css">
+   <!--F'rade 로고 폰트-->
+   <style> 
+    @import url('https://fonts.googleapis.com/css2?family=Kufam:ital,wght@0,400..900;1,400..900&display=swap');
+  </style>
+  <title>트레이드 상세</title>
+  
+  <style>
+   a,
+   button,
+   input,
+   select,
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   * {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+       border: none;
+       text-decoration: none;
+       background: none;
+   
+       -webkit-font-smoothing: antialiased;
+   }
+   
+   menu, ol, ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+   }
+   </style>
+   <script>
+    const url = 'http://localhost:8080/user-info';
+
+    window.onload = loadHeader;       // 페이지 로드 시 헤더 유저 프로필 표시
+
+    // 메인페이지로 이동
+    function moveToMain()  {
+      window.location.href = '../public/main.html'
+    }
+
+    // 헤더 유저 프로필 표시
+    async function loadHeader() {
+      try { // 세션에서 로그인 유저 정보 fetch
+        const res = await fetch(url, { method: 'GET', credentials: 'include' });
+        if (!res.ok) {
+          console.log('로그인 유저 정보 fetch 오류');
+        }
+        const user = await res.json();  // 유저 정보 JSON 변환
+        const userID = user.id;
+        const username = user.username;
+        const userProfileUrl = user.profile;
+
+        // 로그인 유저 정보 표시
+        document.getElementById('profile-username').innerText = username || '로그인 하세요.';
+        document.getElementById('profile-image').src = userProfileUrl || '../img_src/account.jpg';
+      } catch (error) {
+        console.error("사용자 정보 load 오류: ", error);
+      }
+    }
+   </script>
+  <title>트레이드 상세</title>
+</head>
+<body>
+  <div class="div">
+    <div class="div2">
+      <div class="div3" id="trade-title"><%= trade.title %></div>
+      <div class="button"> <!-- 공유하기 버튼 -->
+        <img class="button-img" id="share-button" src="../img_src/share.png" />
+      </div>  
+      <div class="button2"> <!-- 트레이드 요청 버튼 -->
+        <img class="button-img" id="request-button" src="../img_src/chat.jpg" />
+      </div> 
+      <div class="button3"> <!-- 찜하기 버튼 -->
+        <img class="button-img" id="mark-button" src="../img_src/mark.png" />
+      </div>
+      <div class="div4">
+        <div class="div5">
+          <div class="div6" id="trade-user-location"><%= trade_user.location %></div>
+        </div>
+        <div class="div7">
+          <div class="div6" id="trade-date"><%= trade_date %></div>
+        </div>
+        <div class="hathaway">
+          <div class="hathaway2" id="trade-username"><%= trade_user.username %></div>
+        </div>
+        <div class="div8" id="user-profile-img">
+          <img class="_1" src="<%= trade_user.profile_img_url %>" />
+        </div>
+      </div>
+    </div>
+    
+    <!-- 헤더 -->
+    <div class="header">
+      <div class="menu-button"></div>
+      <div class="f-rade" onclick="moveToMain()">F’rade</div>
+      <div class="profile">
+        <div class="username" id="profile-username"></div>
+        <div class="image">
+          <img class="image-content" id="profile-image"/>
+        </div>
+      </div>
+      <div class="menu">Menu</div>
+    </div>
+
+    <div class="line"></div>
+    <div class="content">
+      <div class="div11">
+        <div class="div12"><%= req_prod.prod_name %></div>  <!-- 희망 사료 제품명 -->
+        <div class="div13">
+          <img class="_2-1" src="<%= req_prod.img_url %>"/> <!-- 희망 사료 제품이미지-->
+        </div>
+        <div class="div14">이 사료와 교환하고 싶어요!</div>
+      </div>
+      <div class="text">
+        <div class="div16"><%= trade.text %></div> <!--트레이드 상세설명 내용-->
+      </div>
+      <div class="div17">
+        <div class="div18"><%= trade_prod.prod_name %></div>  <!-- 등록 사료 제품명 -->
+        <div class="div19">
+          <div class="div20"><%= trade_prod.effect %></div> <!-- 등록 사료 기능 -->
+          <div class="div21">기능</div>
+          <div class="div22"><%= trade.opened %></div>  <!-- 개봉 여부 -->
+          <div class="div23">상태</div>
+          <div class="div24"><%= trade.weight %>g</div> <!-- 등록 사료 중량 -->
+          <div class="div25">중량</div>
+          <div class="div26"><%= trade.ubd %></div> <!-- 등록 사료 소비기한 -->
+          <div class="div27">소비기한</div>
+          <div class="div28"><%= trade_prod.brand %></div> <!-- 등록 사료 브랜드 -->
+          <div class="div29">브랜드</div>
+        </div>
+        <div class="div30">
+          <img class="_13" src="<%= trade_prod.img_url %>" /> <!-- 등록 사료 제품이미지 -->
+        </div>
+      </div>
+      <div class="div31">
+        <img class="_14" src="<%= trade.trade_img %>" />
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./vars.css">
+  <link rel="stylesheet" href="./start_style.css">
+  <!--F'rade 로고 폰트-->
+  <style> 
+    @import url('https://fonts.googleapis.com/css2?family=Kufam:ital,wght@0,400..900;1,400..900&display=swap');
+  </style>
+
+  <style>
+   a,
+   button,
+   input,
+   select,
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   * {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+       border: none;
+       text-decoration: none;
+       background: none;
+   
+       -webkit-font-smoothing: antialiased;
+   }
+   
+   menu, ol, ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+   }
+   </style>
+
+  <script>
+    function moveToSignIn()  {
+      window.location.href = './sign_in.html'
+    }
+
+    function moveToLogin() {
+      window.location.href = './login.html'
+    }
+  </script>
+
+  <title>Frade 시작화면</title>
+</head>
+<body>
+  <div class="div">
+    <div class="content">
+      <div class="copy">
+        <div class="div2">반려동물 사료, 집사끼리 교환하기</div>
+        <div class="f-rade">F’rade</div>
+      </div>
+      <div class="div3">
+        <div class="text">프레이드가 처음이신가요?</div>
+        <div class="vuesax-linear-profile-circle">
+          <img class="vuesax-linear-profile-circle2" src="../img_src/entrance.jpg" onclick="moveToSignIn()"/>
+        </div>
+        <div class="f-rade2">
+          회원가입하고
+          <br />
+          F’rade 시작하기
+        </div>
+      </div>
+      <div class="div4">
+        <div class="text2">프레이드 회원이신가요?</div>
+        <div class="vuesax-linear-login">
+          <img class="vuesax-linear-login2" src="../img_src\account.jpg" onclick="moveToLogin()"/>
+        </div>
+        <div class="f-rade2">
+          로그인하고
+          <br />
+          F’rade 이용하기
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

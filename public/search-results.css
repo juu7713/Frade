@@ -1,0 +1,368 @@
+.div,
+.div * {
+  box-sizing: border-box;
+}
+.div {
+  background: #ffffff;
+  height: 1024px;
+  position: relative;
+  overflow: hidden;
+}
+.content {
+  width: 1100px;
+  height: 700px;
+  position: absolute;
+  left: calc(50% - 550px);
+  top: 300px;
+  overflow: visible;
+}
+.trade-list {
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-width: 0px 0px 1px 0px;
+  width: 1100px;
+  height: 80px;
+  left: 0px;
+  top: 300px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.trade-title {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  width: 450px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10px 0 20px;
+  text-overflow: ellipsis; 
+  overflow: hidden;
+  cursor: pointer;   
+}
+.trade-location {
+  color: #000000;
+  text-align: right;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  width: 200px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10px 0 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.trade-product-name {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  width: 360px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10px 0 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.mark-button {
+  width: 40px;
+  height: 40px;
+  left: 1050px;
+  top: 31px;
+  display: flex;
+  object-fit: cover;
+}
+.columns {
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-width: 1px 0px 1px 0px;
+  width: 1100px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+}
+.header {
+  width: 1440px;
+  height: 80px;
+  position: relative;
+  left: calc(50% - 720px);
+  top: 0px;
+  overflow: hidden;
+}
+.menu-button {
+  background: #d9d9d9;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.f-rade {
+  color: #000000;
+  text-align: center;
+  font-family: "Kufam-Medium", sans-serif;
+  font-size: 40px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  position: absolute;
+  left: calc(50% - 100px);
+  top: calc(50% - 26px);
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile {
+  padding: 15px 5px 15px 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  width: 240px;
+  position: absolute;
+  right: 15px;
+  top: calc(50% - 40px);
+  overflow: hidden;
+}
+.username {
+  color: #000000;
+  text-align: right;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.image {
+  border-radius: 100px;
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+}
+.image-content {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 1%;
+  top: 0;
+  object-fit: fill;
+}
+.menu {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  position: absolute;
+  left: 16px;
+  top: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search {
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 2px;
+  width: 800px;
+  height: 60px;
+  position: absolute;
+  left: calc(50% - 400px);
+  top: calc(50% - 403px);
+  overflow: hidden;
+}
+.button {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 750px;
+  top: calc(50% - 20px);
+  overflow: hidden;
+}
+.filter-1 {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: calc(50% - 20px);
+  top: calc(50% - 20px);
+  object-fit: cover;
+}
+.button2 {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 690px;
+  top: calc(50% - 20px);
+  overflow: hidden;
+}
+.search-1 {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: calc(50% - 20px);
+  top: calc(50% - 20px);
+  object-fit: cover;
+}
+.button-divider {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 0;
+  width: 40px;
+  height: 0px;
+  position: absolute;
+  left: 740px;
+  top: calc(50% - 20px);
+  transform-origin: 0 0;
+  transform: rotate(90deg) scale(1, 1);
+}
+.search-input {
+  width: 650px;
+  height: 40px;
+  position: absolute;
+  left: 20px;
+  top: calc(50% - 20px);
+  overflow: hidden;
+}
+.div10 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  position: absolute;
+  left: 0px;
+  top: calc(50% - 20px);
+  width: 650px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.fradeuser {
+  color: #000000;
+  text-align: right;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.div11 {
+  border-radius: 100px;
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+}
+._1 {
+  width: 128px;
+  height: 96px;
+  position: absolute;
+  left: -44px;
+  top: -37px;
+  object-fit: cover;
+}
+.search,
+.search * {
+  box-sizing: border-box;
+}
+.search {
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 2px;
+  height: 60px;
+  top: 130px;
+  position: absolute;
+  overflow: clip;
+}
+.button {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 750px;
+  top: calc(50% - 20px);
+  overflow: clip;
+  cursor: pointer;
+}
+.rectangle-1 {
+  background: #ffffff;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: clip;
+}
+.button2 {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 690px;
+  top: calc(50% - 20px);
+  overflow: clip;
+  cursor: pointer;
+}
+.button-divider {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 0;
+  width: 40px;
+  height: 0px;
+  position: absolute;
+  left: 740px;
+  top: calc(50% - 20px);
+  transform-origin: 0 0;
+  transform: rotate(90deg) scale(1, 1);
+}
+.search-input {
+  width: 650px;
+  height: 40px;
+  position: absolute;
+  left: 20px;
+  top: calc(50% - 20px);
+  overflow: hidden;
+}
+.enter {
+  color: #000000;
+  outline: 0;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  position: absolute;
+  left: 0px;
+  top: calc(50% - 20px);
+  width: 650px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}

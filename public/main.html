@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./main_style.css">
+  
+  <!--F'rade 로고 폰트-->
+  <style> 
+    @import url('https://fonts.googleapis.com/css2?family=Kufam:ital,wght@0,400..900;1,400..900&display=swap');
+  </style>
+    
+  <style>
+   * {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+       border: none;
+       text-decoration: none;
+       background: none;
+       -webkit-font-smoothing: antialiased;
+   }
+   
+   menu, ol, ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+   }
+  /* 검색 필터 창 style */
+  .modal {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content {
+    background: #ffffff;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 1px;
+    padding: 10px;
+    width: 450px;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+  }
+  .modal-title {
+    color: #000000;
+    text-align: center;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    position: absolute;
+    left: calc(50% - 60px);
+    top: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .secondary-button1 {
+    background: #eeeeee;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    width: 85px;
+    height: 28px;
+    position: absolute;
+    left: calc(50% - -8px);
+    top: 293px;
+    cursor: pointer;
+  }
+  .button1-label {
+    color: #000000;
+    text-align: center;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 13px;
+    line-height: 150%;
+    font-weight: 500;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .secondary-button2 {
+    background: #000000;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    width: 85px;
+    height: 28px;
+    position: absolute;
+    left: calc(50% - 92px);
+    top: 293px;
+    cursor: pointer;
+  }
+  .button2-label {
+    color: #ffffff;
+    text-align: center;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 13px;
+    line-height: 150%;
+    font-weight: 500;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .close-button {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .component-1 {
+    width: 18px;
+    height: 17.68px;
+    position: absolute;
+    left: calc(50% - 9px);
+    top: calc(50% - 9px);
+    overflow: visible;
+  }
+  .search-filter-list {
+    width: 360px;
+    height: 231px;
+    position: absolute;
+    left: calc(50% - 180px);
+    top: calc(50% - 125px);
+    overflow: hidden;
+  }
+  .filter5 {
+    width: 350px;
+    height: 30px;
+    position: absolute;
+    left: calc(50% - 175px);
+    top: 188px;
+  }
+  .filter-lable {
+    color: #000000;
+    text-align: center;
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    position: absolute;
+    left: 0px;
+    top: calc(50% - 10px);
+    width: 80px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .filter-selection {
+    background: #ffffff;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: #e0e0e0;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 0px 16px 0px 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 260px;
+    height: 30px;
+    position: absolute;
+    right: 0px;
+    top: calc(50% - 15px);
+    color: #828282;
+  }
+  .chevron-down {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    overflow: visible;
+  }
+  .filter4 {
+    width: 350px;
+    height: 30px;
+    position: absolute;
+    left: calc(50% - 175px);
+    top: 144px;
+  }
+  .chevron-down2 {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    overflow: visible;
+  }
+  .filter3 {
+    width: 350px;
+    height: 30px;
+    position: absolute;
+    left: calc(50% - 175px);
+    top: 100px;
+  }
+  .chevron-down3 {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    overflow: visible;
+  }
+  .filter2 {
+    width: 350px;
+    height: 30px;
+    position: absolute;
+    left: calc(50% - 175px);
+    top: 56px;
+  }
+  .chevron-down4 {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    overflow: visible;
+  }
+  .filter1 {
+    width: 350px;
+    height: 30px;
+    position: absolute;
+    left: calc(50% - 175px);
+    top: 12px;
+    overflow: hidden;
+  }
+  .chevron-down5 {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    overflow: visible;
+  }
+  </style>
+  <title>F'rade 메인</title>
+  <script src="../scripts/header.js"></script>
+  <script>
+    const url1 = 'http://localhost:8080/trades-main';
+    const url2 = 'http://localhost:8080/trade-info/';
+    // const url3 = 'http://localhost:8080/user-info';
+
+    window.onload = () => { // 메인페이지 로드 시
+      loadHeader();       // 헤더 유저 프로필 표시
+      loadTradesMain();   // 최근 등록 트레이드 리스트 표시
+    };
+
+    // 메인페이지로 이동
+    function moveToMain()  {
+      window.location.href = './main.html'
+    }
+
+    /*
+    // 헤더 유저 프로필 표시
+    async function loadHeader() {
+      try { // 세션에서 로그인 유저 정보 fetch
+        const res = await fetch(url3, { method: 'GET', credentials: 'include' });
+        if (!res.ok) {
+          console.log('로그인 유저 정보 fetch 오류');
+        }
+        const user = await res.json();  // 유저 정보 JSON 변환
+        const userID = user.id;
+        const username = user.username;
+        const userProfileUrl = user.profile;
+
+        // 로그인 유저 정보 표시
+        document.getElementById('profile-username').innerText = username || '로그인 하세요.';
+        document.getElementById('profile-image').src = userProfileUrl || '../img_src/account.jpg';
+      } catch (error) {
+        console.error("사용자 정보 load 오류: ", error);
+      }
+    }
+    */animalFilter
+    // 최근 등록 트레이드 리스트 표시
+    async function loadTradesMain() {
+      try {
+        // 메인 트레이드 리스트 fetch
+        const res = await fetch(url1, {method: 'GET'});
+        const trades = await res.json();
+
+        const tradesMain = document.querySelector('.trades-main');
+        const tradeList = document.createElement('ol');
+
+        trades.forEach(trade => {
+          const list = document.createElement('li');
+          list.innerHTML = `
+            <div class="div3" onclick="loadTradeInfo('${trade.trade_id}')">
+              <div class="div4">${trade.title}</div>
+              <div class="div5">${trade.prod_name}</div>
+            </div>
+          `;
+          tradeList.appendChild(list);
+        });
+        tradesMain.appendChild(tradeList);
+      } catch(error) {
+        console.error("메인 트레이드 load 오류: ", error);
+      }
+    }
+
+    // 트레이드 항목 클릭 -> 트레이드 상세로 이동
+    async function loadTradeInfo(tradeID) {
+      window.location.href = url2 + tradeID;
+    }
+
+    // 트레이드 등록 페이지로 이동
+    function moveToTradeWrite() {
+      window.location.href = './trade_write.html';
+    }
+  </script>
+</head>
+<body>
+  <div class="div">
+    <!-- 헤더 -->
+    <div class="header">
+      <div class="menu-button"></div>
+      <div class="f-rade" onclick="moveToMain()">F’rade</div>
+      <div class="profile">
+        <div class="username" id="profile-username"></div>
+        <div class="image">
+          <img class="image-content" id="profile-image"/>
+        </div>
+      </div>
+      <div class="menu">Menu</div>
+    </div>
+
+    <div class="content">
+      <!--최근 트레이드 목록 표시-->
+      <div class="trades-main">
+        <div class="div3">
+          <div class="div4">제목</div>
+          <div class="div5">상품명</div>
+        </div>
+      </div>
+
+      <!--트레이드 관리 페이지로 이동-->
+      <div class="my">
+        <div class="my2">My 트레이드</div>
+        <img class="grid" src="../img_src\grid.png" />
+      </div>
+      
+      <!--트레이드 등록 페이지로 이동-->
+      <div class="div14" onclick="moveToTradeWrite()">
+        <div class="div15">트레이드 등록</div>
+        <img class="plus-circle" src="../img_src/plus.png" />
+      </div>
+    </div>
+    
+    <!-- 검색창 -->
+    <form id="search-form" class="search" action="http://localhost:8080/submit-search" method="POST"> 
+      <div class="search-input">  <!-- 검색어 입력 -->
+        <input type="text" name="word" id="search-word-field" class="enter" placeholder="사료명 또는 브랜드로 검색">
+      </div>
+      <input type="text" name="animal" id="animal-filter-field" value="select" hidden> 
+      <input type="text" name="type" id="type-filter-field" value="select" hidden>
+      <input type="text" name="material" id="material-filter-field" value="select" hidden>
+      <input type="text" name="brand" id="brand-filter-field" value="select" hidden>
+      <input type="text" name="effect" id="effect-filter-field" value="select" hidden>
+      <button type="button" class="button" onclick="openSearchFilter()">  <!-- 검색 필터 설정 버튼 -->
+        <img class="rectangle-1" src="../img_src/filter.png"/>
+      </button>
+      <input type="image" id="search-form-submit" class="button2" src="../img_src/search.png" alt="검색"> <!-- 검색 버튼 -->
+      <div class="button-divider"></div>
+    </form>
+
+    <!-- 검색 필터 창 -->
+    <div id="modal" class="modal">
+      <div id="search-filter-modal" class="modal-content">
+       <div class="modal-title">검색 필터 설정</div>
+       <button type="button" class="secondary-button1" onclick="resetfilter()"> <!-- 검색 필터 초기화 버튼-->
+         <div class="button1-label">필터 초기화</div>
+       </button>
+       <button type="button" class="secondary-button2" onclick="applySearchFilter()"> <!-- 검색 필터 적용 버튼-->
+         <div class="button2-label">선택 완료</div>
+       </button>
+       <button type="button" class="close-button" onclick="closeSearchFilter()">  <!-- 검색 필터 닫기 버튼-->
+         <img class="component-1" src="../img_src/close.png" />
+       </button>
+       <div class="search-filter-list">
+         <div class="filter5">
+           <div class="filter-lable">기능</div>
+           <select name="effect" id="effect-modal" class="filter-selection">
+             <option value="select">==기능 선택==</option>
+             <option value="시니어">시니어</option>
+             <option value="인도어">인도어</option>
+             <option value="baby">키튼 / 퍼피</option>
+             <option value="헤어볼">헤어볼</option>
+             <option value="그레인프리">그레인프리</option>
+             <option value="장건강">장건강</option>
+             <option value="치아">치아</option>
+             <option value="체중">체중조절</option>
+             <option value="요로기계">요로기계</option>
+             <option value="피모">피모</option>
+             <option value="갑상선">갑상선 관리</option>
+             <option value="눈건강">눈건강</option>
+             <option value="임신">임신 / 수유</option>
+             <option value="관절">관절건강</option>
+             <option value="면역력">면역력</option>
+             <option value="식이">식이민감성 / 알레르기</option>
+           </select>
+         </div>
+         <div class="filter4">
+           <div class="filter-lable">브랜드</div>
+           <select name="brand" id="brand-modal" class="filter-selection">
+             <option value="select">==브랜드 선택==</option>
+             <option value="ANF">ANF</option>
+             <option value="내추럴발란스">내추럴발란스</option>
+             <option value="내추럴코어">내추럴코어</option>
+             <option value="뉴트로">뉴트로</option>
+             <option value="더리얼">더리얼</option>
+             <option value="로얄캐닌">로얄캐닌</option>
+             <option value="로우즈">로우즈</option>
+             <option value="시저">시저</option>
+             <option value="캐츠랑">캐츠랑</option>
+             <option value="힐스">힐스</option>
+           </select >
+         </div>
+         <div class="filter3">
+           <div class="filter-lable">주원료</div>
+           <select name="material" id="material-modal" class="filter-selection">
+             <option value="select">==주원료 선택==</option>
+             <option value="닭">닭</option>
+             <option value="소">소</option>
+             <option value="연어">연어</option>
+             <option value="참치">참치</option>
+             <option value="흰살생선">흰살생선</option>
+             <option value="생선">생선</option>
+             <option value="돼지">돼지</option>
+             <option value="오리">오리</option>
+             <option value="칠면조">칠면조</option>
+             <option value="양">양</option>
+             <option value="야채">야채</option>
+           </select>
+         </div>
+         <div class="filter2">
+           <div class="filter-lable">사료 유형</div>
+           <select name="type" id="type-modal" class="filter-selection">
+             <option value="select">==사료 유형 선택==</option>
+             <option value="건식사료">건식사료</option>
+             <option value="습식사료">습식사료</option>
+           </select>
+         </div>
+         <div class="filter1">
+           <div class="filter-lable">동물 종류</div>
+           <select name="animal" id="animal-modal" class="filter-selection">
+             <option value="select">==동물 종류 선택==</option>
+             <option value="고양이">고양이</option>
+             <option value="강아지">강아지</option>
+           </select>
+         </div>
+       </div>
+     </div>
+  </div>
+  <!-- 검색필터창 script-->
+   <script>
+    const searchFilter = document.getElementById('modal');
+    const animalModal = document.getElementById('animal-modal');
+    const typeModal = document.getElementById('type-modal');
+    const materialModal = document.getElementById('material-modal');
+    const brandModal = document.getElementById('brand-modal');
+    const effectModal = document.getElementById('effect-modal');
+
+    const animalFilter = document.getElementById('animal-filter-field');
+    const typeFilter = document.getElementById('type-filter-field');
+    const materialFilter = document.getElementById('material-filter-field');
+    const brandFilter = document.getElementById('brand-filter-field');
+    const effectFilter = document.getElementById('effect-filter-field');
+
+    // 검색 필터 창 열기
+    function openSearchFilter() {
+      searchFilter.style.display = 'flex';
+    }
+    // 검색 필터 창 닫기
+    function closeSearchFilter() {
+      searchFilter.style.display = 'none';
+    }
+    // 검색 필터 초기화
+    function resetfilter() {  
+      animalModal.value = 'select';
+      typeModal.value = 'select';
+      materialModal.value = 'select';
+      brandModal.value = 'select';
+      effectModal.value = 'select';
+    }
+    // 검색 필터 적용
+    function applySearchFilter() {
+      animalFilter.value = animalModal.value;
+      typeFilter.value = typeModal.value;
+      materialFilter.value = materialModal.value;
+      brandFilter.value = brandModal.value;
+      effectFilter.value = effectModal.value;
+      closeSearchFilter();
+    }
+   </script>
+  
+</body>
+
+</html>
